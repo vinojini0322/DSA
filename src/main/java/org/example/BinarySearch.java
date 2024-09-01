@@ -7,6 +7,7 @@ public class BinarySearch {
         int[] peakArr = {0, 8, 9, 10, 9};
         System.out.println("Ordinary binary search " + binarySearch(arr, 54));
         System.out.println("Order agnostic binary search " + orderAgnosticBinarySearch(arr, 54));
+        System.out.println("Order agnostic binary search " + orderAgnosticBinarySearch(arrDesc, 54));
         System.out.println("Peak element in mountain array " + peakIndexInMountainArray(peakArr));
     }
 
@@ -66,6 +67,24 @@ public class BinarySearch {
                 end = mid;
             } else {
                 start = mid + 1;
+            }
+        }
+        return start;
+
+    }
+
+    //    Peak element in an array
+    //    LeetCode question 162
+    public int findPeakElement(int[] nums) {
+        int start = 0;
+        int end = nums.length - 1;
+        while (start < end) {
+            int n = start + (end - start) / 2;
+            if (nums[n] > nums[n + 1]) {
+                end = n;
+
+            } else {
+                start = n + 1;
             }
         }
         return start;
