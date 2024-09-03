@@ -5,12 +5,14 @@ public class BinarySearch {
         int[] arr = {21, 34, 54, 56, 65, 67, 78, 99};
         int[] arrDesc = {99, 78, 67, 65, 56, 54, 34, 21};
         int[] peakArr = {0, 8, 9, 10, 9};
+        char[] letters = {'c', 'f', 'j'};
         System.out.println("Ordinary binary search " + binarySearch(arr, 54));
         System.out.println("Order agnostic binary search " + orderAgnosticBinarySearch(arr, 54));
         System.out.println("Order agnostic binary search " + orderAgnosticBinarySearch(arrDesc, 54));
         System.out.println("Peak element in mountain array " + peakIndexInMountainArray(peakArr));
         System.out.println("Find ceiling of number " + ceilingOfNumber(arr, 64));
         System.out.println("Find floor of number " + floorOfNumber(arr, 64));
+        System.out.println("Find Smallest Letter Greater Than Target " + nextGreatestLetter(letters, 'c'));
     }
 
     //    Ordinary binary search
@@ -165,6 +167,25 @@ public class BinarySearch {
             }
         }
         return end;
+    }
+
+    //    Find Smallest Letter Greater Than Target
+    //    LeetCode Question 744
+    public static char nextGreatestLetter(char[] letters, char target) {
+        int start = 0;
+        int end = letters.length - 1;
+        if (target < letters[start] || target >= letters[end]) {
+            return letters[0];
+        }
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (letters[mid] > target) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return letters[start];
     }
 
 }
