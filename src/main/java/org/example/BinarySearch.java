@@ -1,11 +1,14 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class BinarySearch {
     public static void main(String[] args) {
         int[] arr = {21, 34, 54, 56, 65, 67, 78, 99};
         int[] arrDesc = {99, 78, 67, 65, 56, 54, 34, 21};
         int[] peakArr = {0, 8, 9, 10, 9};
         char[] letters = {'c', 'f', 'j'};
+        int[] nums = {5, 7, 7, 8, 8, 10};
         System.out.println("Ordinary binary search " + binarySearch(arr, 54));
         System.out.println("Order agnostic binary search " + orderAgnosticBinarySearch(arr, 54));
         System.out.println("Order agnostic binary search " + orderAgnosticBinarySearch(arrDesc, 54));
@@ -13,6 +16,7 @@ public class BinarySearch {
         System.out.println("Find ceiling of number " + ceilingOfNumber(arr, 64));
         System.out.println("Find floor of number " + floorOfNumber(arr, 64));
         System.out.println("Find Smallest Letter Greater Than Target " + nextGreatestLetter(letters, 'c'));
+        System.out.println(" Find First and Last Position of Element in Sorted Array " + Arrays.toString(searchRange(nums, 8)));
     }
 
     //    Ordinary binary search
@@ -186,6 +190,34 @@ public class BinarySearch {
             }
         }
         return letters[start];
+    }
+
+    //    Find First and Last Position of Element in Sorted Array
+    //    LeetCode question 34
+    public static int[] searchRange(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] > target) {
+                end = mid - 1;
+            } else if (nums[mid] < target) {
+                start = mid + 1;
+            } else {
+                int i = mid;
+                int j = mid;
+                while (i >= 0 && nums[i] == target) {
+                    i--;
+                }
+                while (j < nums.length && nums[j] == target) {
+                    j++;
+                }
+
+                return new int[]{i + 1, j - 1};
+            }
+        }
+        return new int[]{-1, -1};
+
     }
 
 }
