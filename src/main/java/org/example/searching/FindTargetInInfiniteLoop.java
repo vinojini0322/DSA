@@ -1,4 +1,4 @@
-package org.example;
+package org.example.searching;
 
 public class FindTargetInInfiniteLoop {
     public static void main(String[] args) {
