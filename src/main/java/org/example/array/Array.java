@@ -10,6 +10,7 @@ public class Array {
         int[] arr = {3, 0, 1, 2, 5};
         System.out.println("Missing number : " + missingNum(arr));
         System.out.println("Remove duplicates : " + Arrays.toString(removeDuplicates(new int[]{1, 1, 1, 2, 2, 3, 4, 5, 6, 6, 23, 44, 54, 55, 55, 66, 66, 66})));
+        System.out.println("Move zeros to end : " + Arrays.toString(moveZerosToEnd(new int[]{0, 3, 6, 34, 23, 0, 77, 43, 0, 10})));
     }
 
     //    Reverse array
@@ -54,7 +55,7 @@ public class Array {
         return expSum - actualSum;
     }
 
-    //   Remove duplicates in an array
+    //   Remove duplicates in a sorted array
     private static int[] removeDuplicates(int[] arr) {
         int[] updatedArr = new int[arr.length];
 //        updatedArr[0] = arr[0];
@@ -67,4 +68,19 @@ public class Array {
         updatedArr[b] = arr[arr.length - 1];
         return updatedArr;
     }
+
+    //    Move zeros to the end without changing the order of non-zero numbers
+    private static int[] moveZerosToEnd(int[] arr) {
+        int nonZeroIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                arr[nonZeroIndex++] = arr[i];
+            }
+        }
+        for (int i = nonZeroIndex; i < arr.length; i++) {
+            arr[i] = 0;
+        }
+        return arr;
+    }
+
 }
