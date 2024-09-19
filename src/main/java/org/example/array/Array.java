@@ -11,6 +11,7 @@ public class Array {
         System.out.println("Missing number : " + missingNum(arr));
         System.out.println("Remove duplicates : " + Arrays.toString(removeDuplicates(new int[]{1, 1, 1, 2, 2, 3, 4, 5, 6, 6, 23, 44, 54, 55, 55, 66, 66, 66})));
         System.out.println("Move zeros to end : " + Arrays.toString(moveZerosToEnd(new int[]{0, 3, 6, 34, 23, 0, 77, 43, 0, 10})));
+        System.out.println("Merge two sorted arrays : " + Arrays.toString(mergeSortedArrays(new int[]{1, 8, 37, 89, 90}, new int[]{2, 4, 6, 7, 9, 12, 34, 56})));
     }
 
     //    Reverse array
@@ -81,6 +82,30 @@ public class Array {
             arr[i] = 0;
         }
         return arr;
+    }
+
+    //    Merge two sorted arrays
+    private static int[] mergeSortedArrays(int[] arr1, int[] arr2) {
+        int[] mergedArr = new int[arr1.length + arr2.length];
+        int mergedIndex = 0;
+        int i = 0;
+        int j = 0;
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] <= arr2[j]) {
+                mergedArr[mergedIndex++] = arr1[i++];
+            } else {
+                mergedArr[mergedIndex++] = arr2[j++];
+            }
+        }
+        while (i < arr1.length) {
+            mergedArr[mergedIndex++] = arr1[i++];
+        }
+        while (j < arr2.length) {
+            mergedArr[mergedIndex++] = arr2[j++];
+        }
+
+        return mergedArr;
+
     }
 
 }
