@@ -2,7 +2,7 @@ package org.example.array;
 
 import java.util.Arrays;
 
-public class Array {
+public class ArrayBasic {
     public static void main(String[] args) {
         System.out.println("Reversed array : " + Arrays.toString(reverseArray(new int[]{3, 43, 21, 53, 65, 32, 87, 3})));
         System.out.println("Max number : " + maxNum(new int[]{3, 43, 21, 53, 65, 32, 87, 300}));
@@ -103,7 +103,6 @@ public class Array {
         while (j < arr2.length) {
             mergedArr[mergedIndex++] = arr2[j++];
         }
-
         return mergedArr;
 
     }
