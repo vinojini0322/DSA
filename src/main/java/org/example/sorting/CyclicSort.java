@@ -44,6 +44,4 @@ public class CyclicSort {
         }
         return nums.length;
     }
-
-
 }
